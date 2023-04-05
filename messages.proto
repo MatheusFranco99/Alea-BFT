@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+package python_app;
+
+// message Header {
+//     required int32 length = 1;
+// }
+
+message VCBCSend {
+    required string data = 1;
+    required int32 priority = 2;
+    required int32 author = 3;
+}
+
+message VCBCReady {
+    required int32 priority = 1;
+    required int32 author = 2;
+    required int32 sender = 3;
+    
+}
+
+message VCBCFinal {
+    required int32 priority = 1;
+    required int32 author = 2;
+    required int32 sender = 3;
+}
+
+// ------------------------------------------
+
+message ABAInit {
+    required int32 author = 1;
+    required int32 priority = 2;
+    required int32 round = 3;
+    required int32 vote = 4;
+    required int32 sender = 5;
+}
+message ABAAux {
+    required int32 author = 1;
+    required int32 priority = 2;
+    required int32 round = 3;
+    required int32 vote = 4;
+    required int32 sender = 5;
+}
+message ABAConf {
+    required int32 author = 1;
+    required int32 priority = 2;
+    required int32 round = 3;
+    repeated int32 votes = 4;
+    required int32 sender = 5;
+}
+message ABAFinish {
+    required int32 author = 1;
+    required int32 priority = 2;
+    required int32 vote = 3;
+    required int32 sender = 4;
+}
