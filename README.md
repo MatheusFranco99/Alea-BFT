@@ -6,22 +6,21 @@ Alea-BFT ([Alea-BFT arXiv](https://arxiv.org/abs/2202.02071)) protocol implement
 
 
 ## The Protocol
-----
 Alea-BFT is an asynchronous byzantine fault tolerance protocol. Its major benefit is the quadratic communication complexity, against the cubic complexity of previous protocols. This is an important scalability upgrade from Alea-BFT which allows it to be applied in real world scenarios.
 
 ## Purpose
----
+
 The purpose of this implementation is to test and take metrics of the original protocol and of variations of it.
 
 ## Usage
----
+
 ```console
 python3 script.py N
 ```
 where N is the number of nodes in the network.
 
 ## Files
----
+
 
 ### Scripts
 1. script.py launches the network and runs the protocol. Log is created in the out{$i$}.txt file where $i$ is the number of the node. It receives one argument, the number of nodes to launch. E.g.
@@ -187,18 +186,16 @@ Node class with the following methods:
 - Add message.
 - If gets partial quorum for vote and never sent ABA Finish for this vote, broadcasts it.
 - If gets quorum, set ABA as decided.
-
+---
 
 
 ## Testing behavior
----
 When the network is launched, only the node 1 starts a VCBC. After an ABA is completed, it starts the next VCBC after some delay.
 
 Note that this is implemented to test latency instead of throughput.
 
 
 ## Roadmap:
----
 - [X] Alea-BFT base implementation
 - [ ] Threshold signture schema
 
