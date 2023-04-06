@@ -6,8 +6,10 @@
 
 <!-- ![](md_resources/aleabft.png) -->
 
-Alea-BFT ([Alea-BFT arXiv](https://arxiv.org/abs/2202.02071)) protocol implementation in python3.
 
+![GitHub repo size](https://img.shields.io/github/repo-size/MatheusFranco99/Alea-BFT)
+
+Alea-BFT ([Alea-BFT arXiv](https://arxiv.org/abs/2202.02071)) protocol implementation in python3.
 
 ## The Protocol
 Alea-BFT is an asynchronous byzantine fault tolerance protocol. Its major benefit is the quadratic communication complexity, against the cubic complexity of previous protocols. This is an important scalability upgrade from Alea-BFT which allows it to be applied in real world scenarios.
