@@ -8,19 +8,7 @@ from vcbc_state import VCBCState,ReadyState
 from coin import Coin
 from aba_state import ABAState
 from timer import Timer
-
-# msg = messages_pb2.VCBCSend()
-# msg.data = "text"
-# msg.author = 1
-# msg.priority = 0
-
-# print(f"{msg.data=}")
-# serialized_msg = msg.SerializeToString()
-# print(f"{serialized_msg=}")
-
-# deserialized_msg = messages_pb2.VCBCSend()
-# deserialized_msg.ParseFromString(serialized_msg)
-# print(f"{deserialized_msg.data=}")
+from logger import Logger
 
 # Define message types
 MESSAGE_TYPES = {
@@ -43,7 +31,7 @@ def create_connection(addr,port):
 
 class node:
 
-    def __init__(self,node_number,number_of_nodes):
+    def __init__(self,node_number,number_of_nodes,output_file = None, verbose = 2):
 
         # NODE CONFIGURATION
         self.node_number = node_number
@@ -57,6 +45,18 @@ class node:
         self.ready_state = ReadyState()
         
         self.priority = 0
+
+        self.verbose = verbose
+        
+        self.output_file = f"out{self.node_number}.log"
+        if output_file != None:
+            self.output_file = output_file
+
+        self.logger = Logger(self.output_file,verbose_mode=self.verbose)
+    
+        self.lock = threading.Lock()
+        
+
 
         # NETWORK CONFIGURATION
         self.addr = 'localhost'
@@ -76,6 +76,15 @@ class node:
         # CREATES SIGINT HANDLER -> TO CLOSE CONNECTIONS
         signal.signal(signal.SIGINT, self.signal_handler)
 
+    # def log(self,text):
+    #     if self.verbose == 0:
+    #         return
+    #     if self.verbose == 2:
+    #         if "Decided" in text or "microseconds" in text:
+    #             print(text)
+    #     else:
+    #         print(text)
+
     def getSocket(self,node_number):
         if node_number in self.connections:
             return self.connections[node_number]
@@ -93,7 +102,7 @@ class node:
 
     # SIGNIT HANDLER -> CLOSE CONNECTIONS
     def signal_handler(self, sig, frame):
-        print('Caught interrupt signal, closing connections...')
+        self.logger.debug('Caught interrupt signal, closing connections...')
         self.close()
 
     # CLOSE NODE -> CLOSE CONNECTIONS (+ SERVER SOCKET)
@@ -123,12 +132,12 @@ class node:
 
         while True:
             # wait for a connection
-            print("Waiting for a connection...")
+            self.logger.debug("Waiting for a connection...")
             conn, addr = self.sock.accept()
 
             # if the connection is already in the dictionary of connections, close it
             if addr in connections:
-                print("Connection from %s:%d already exists, closing new connection" % addr)
+                self.logger.debug("Connection from %s:%d already exists, closing new connection" % addr)
                 conn.close()
             else:
                 # handle the connection in a new thread
@@ -139,7 +148,7 @@ class node:
     # KEEPS CONNECTION PERSISTENT
     # GETS MESSAGE AND CALLS PROCESS_MSG
     def handle_connection(self,conn, addr, connections):
-        print("Accepted connection from %s:%d" % addr)
+        self.logger.debug("Accepted connection from %s:%d" % addr)
 
         # add the connection to the dictionary of connections
         connections[addr] = conn
@@ -148,13 +157,9 @@ class node:
             while True:
                 # receive a message from the client
                 message = self.receive_message(conn)
-                # print("Received message from %s:%d" % addr)
-                # print("  data: %s" % message.data)
-                # print("  priority: %d" % message.priority)
-                # print("  author: %d" % message.author)
                 self.process_message(message)
         except Exception as e:
-            print("Error handling connection from %s:%d: %s" % (addr[0], addr[1], str(e),print(e.__traceback__)))
+            self.logger.warning("Error handling connection from %s:%d: %s %s" % (addr[0], addr[1], str(e),str(e.__traceback__)))
 
         # remove the connection from the dictionary of connections
         del connections[addr]
@@ -220,29 +225,35 @@ class node:
     
     # PROCESS MESSAGE
     def process_message(self,message):
-        # print(message)
+
+        # acquire the lock
+        self.lock.acquire()
 
         if isinstance(message,messages_pb2.VCBCSend):
-            print(f"VCBCSend:{message}")
-            self.uponVCBCSend(message)
+            # new_logger = self.logger.newLogger("VCBCSend")
+            self.uponVCBCSend(message,self.logger)
         elif isinstance(message,messages_pb2.VCBCReady):
-            print(f"VCBCReady:{message}")
-            self.uponVCBCReady(message)
+            # new_logger = self.logger.newLogger("VCBCReady")
+            self.uponVCBCReady(message,self.logger)
         elif isinstance(message,messages_pb2.VCBCFinal):
-            print(f"VCBCFinal:{message}")
-            self.uponVCBCFinal(message)
+            # new_logger = self.logger.newLogger("VCBCFinal")
+            self.uponVCBCFinal(message,self.logger)
         elif isinstance(message,messages_pb2.ABAInit):
-            print(f"ABAInit:{message}")
-            self.uponABAInit(message)
+            # new_logger = self.logger.newLogger("ABAInit")
+            self.uponABAInit(message,self.logger)
         elif isinstance(message,messages_pb2.ABAAux):
-            print(f"ABAAux:{message}")
-            self.uponABAAux(message)
+            # new_logger = self.logger.newLogger("ABAAux")
+            self.uponABAAux(message,self.logger)
         elif isinstance(message,messages_pb2.ABAConf):
-            print(f"ABAConf:{message}")
-            self.uponABAConf(message)
+            # new_logger = self.logger.newLogger("ABAConf")
+            self.uponABAConf(message,self.logger)
         elif isinstance(message,messages_pb2.ABAFinish):
-            print(f"ABAFinish:{message}")
-            self.uponABAFinish(message)
+            # new_logger = self.logger.newLogger("ABAFinish")
+            self.uponABAFinish(message,self.logger)
+        
+
+        # release the lock
+        self.lock.release()
 
     # SEND MESSAGE
     def send_message(self,message,sock,msg_type = 1):
@@ -279,18 +290,17 @@ class node:
             sock = self.getSocket(i)
             sock.sendall(data)
 
-    def createPeriodicalVCBC(self):
-        step = 0
-        while True:
+    def createPeriodicalVCBC(self,num_instances):
+        step = 1
+        while step <= num_instances+1:
+            step += 1
             
             time.sleep(3)
             Timer.startTimer(f'{self.priority}')
             self.StartVCBC(f'data_from_priority{self.priority}')
-            # time.sleep(20)
-            break
+            time.sleep(self.number_of_operators * 0.07)
             
-        while True:
-            pass
+        
 
             
                 
@@ -309,10 +319,14 @@ class node:
     # uponMessage methods
     # ================================================================================================
     
-    def uponVCBCSend(self,message):
+    def uponVCBCSend(self,message,logger):
         data = message.data
         priority = message.priority
         author = message.author
+
+        tag = logger.getTag()
+
+        logger.debug(f"UponVCBCSend {tag}: {message}")
 
         if not self.vcbc_state.has(author,priority):
             self.vcbc_state.add(author,data,priority)
@@ -326,14 +340,22 @@ class node:
         sock = self.getSocket(author)
         self.send_message(message,sock,msg_type=msg_type)
   
-    def uponVCBCReady(self,message):
+    def uponVCBCReady(self,message, logger):
         priority = message.priority
         author = message.author
         sender = message.sender
 
+        tag = logger.getTag()
+
+
+        logger.debug(f"UponVCBCReady {tag}: {message}")
+
         if author == self.node_number:
             already_has_quorum = (self.ready_state.getLen(priority) >= self.getQuorum())
             self.ready_state.add(priority,sender)
+            
+            logger.debug(f"UponVCBCReady {tag}: readys receiveds for {priority=}: {self.ready_state.getLen(priority)}. Quorum:{self.getQuorum()}. {already_has_quorum=} ")
+
 
             if not already_has_quorum:
                 if self.ready_state.getLen(priority) >= self.getQuorum():
@@ -347,15 +369,15 @@ class node:
                     self.broadcast(message,msg_type=msg_type)
         
     
-    def uponVCBCFinal(self,message):
+    def uponVCBCFinal(self,message,logger):
         priority = message.priority
         author = message.author
         sender = message.sender
+        
+        tag = logger.getTag()
 
 
-
-        print(f"Receveid VCBCFinal: {author=},{priority=}")
-        print("="*50)
+        logger.debug(f"UponVCBCFinal {tag}: {message}")
 
         if not self.aba_state.hasSentInit(author,priority,0,1):
             message = messages_pb2.ABAInit()
@@ -369,7 +391,7 @@ class node:
             self.broadcast(message,msg_type=msg_type)
             self.aba_state.setSentInit(author,priority,0,1)
 
-    def uponABAInit(self,message):
+    def uponABAInit(self,message,logger):
 
         author = message.author
         priority = message.priority
@@ -377,17 +399,30 @@ class node:
         vote = message.vote
         sender = message.sender
 
+        tag = logger.getTag()
+
+        logger.debug(f"UponABAInit {tag}: {message}")
+
         if self.aba_state.currentPriority(author) > priority:
+            logger.debug(f"UponABAInit {tag}: old message. Current priority for {author=} is bigger than {priority=}")
             return
         if self.aba_state.currentRound(author,priority) > round:
+            logger.debug(f"UponABAInit {tag}: old message. Current round for {author=} and {priority=} is bigger than {round=}")
             return
 
         self.aba_state.addInit(author,priority,round,vote,sender)
 
         if self.aba_state.hasSentAux(author,priority,round,vote):
+            logger.debug(f"UponABAAux {tag}: return. Has sent aux for {author=},{priority=},{round=},{vote=}")
             return
         
+
+        logger.debug(f"UponABAInit {tag}: current len for init {author=},{priority=},{round=},{vote=}: {self.aba_state.lenInit(author,priority,round,vote)}. Quorum={self.getQuorum()}. Partial Quorum={self.getPartialQuorum()}")
+        
         if self.aba_state.lenInit(author,priority,round,vote) >= self.getQuorum():
+            
+            logger.debug(f"UponABAInit {tag}: Sending ABAAux {author=},{priority=},{vote=},{round=},{self.node_number=}. Has sent?{self.aba_state.hasSentAux(author,priority,round,vote)}")
+
             message = messages_pb2.ABAAux()
             message.author = author
             message.priority = priority
@@ -396,13 +431,17 @@ class node:
             message.sender = self.node_number
             msg_type = 5
             
-            self.broadcast(message,msg_type=msg_type)
             self.aba_state.setSentAux(author,priority,round,vote)
+            self.broadcast(message,msg_type=msg_type)
 
         if self.aba_state.hasSentInit(author,priority,round,vote):
             return
+
         
         if self.aba_state.lenInit(author,priority,round,vote) >= self.getPartialQuorum():
+                        
+            logger.debug(f"UponABAInit {tag}: Sending ABAInit {author=},{priority=},{vote=},{round=},{self.node_number=}. Has sent?{self.aba_state.hasSentInit(author,priority,round,vote)}")
+
             message = messages_pb2.ABAInit()
             message.author = author
             message.priority = priority
@@ -415,25 +454,38 @@ class node:
             self.aba_state.setSentInit(author,priority,round,vote)
 
     
-    def uponABAAux(self,message):
+    def uponABAAux(self,message,logger):
 
         author = message.author
         priority = message.priority
         round = message.round
         vote = message.vote
-        sender = message.sender
+        sender = message.sender        
+        
+        tag = logger.getTag()
+
+        logger.debug(f"UponABAAux {tag}: {message}")
 
         if self.aba_state.currentPriority(author) > priority:
+            logger.debug(f"UponABAAux {tag}: old message. Current priority for {author=} is bigger than {priority=}")
             return
         if self.aba_state.currentRound(author,priority) > round:
+            logger.debug(f"UponABAAux {tag}: old message. Current round for {author=} and {priority=} is bigger than {round=}")
             return
 
         self.aba_state.addAux(author,priority,round,vote,sender)
         
         if self.aba_state.hasSentConf(author,priority,round):
+            logger.debug(f"UponABAAux {tag}: return. Has sent conf for {author=},{priority=},{round=}")
             return
+
+        logger.debug(f"UponABAAux {tag}: current len for aux {author=},{priority=},{round=}: {self.aba_state.lenAux(author,priority,round)}. Quorum={self.getQuorum()}")
+
         
         if self.aba_state.lenAux(author,priority,round) >= self.getQuorum():
+
+            logger.debug(f"UponABAAux {tag}: sending ABAConf with {author=},{priority=},{self.aba_state.getConfValues(author,priority,round)=},{round=}")
+
             message = messages_pb2.ABAConf()
             message.author = author
             message.priority = priority
@@ -445,7 +497,7 @@ class node:
             self.broadcast(message,msg_type=msg_type)
             self.aba_state.setSentConf(author,priority,round)
 
-    def uponABAConf(self,message):
+    def uponABAConf(self,message,logger):
 
         author = message.author
         priority = message.priority
@@ -453,24 +505,32 @@ class node:
         votes = list(message.votes)
         sender = message.sender
 
+        tag = logger.getTag()
+
+        logger.debug(f"UponABAConf {tag}: {message}")
+
         if self.aba_state.currentPriority(author) > priority:
+            logger.debug(f"UponABAConf {tag}: old message. Current priority for {author=} is bigger than {priority=}")
             return
         if self.aba_state.currentRound(author,priority) > round:
+            logger.debug(f"UponABAConf {tag}: old message. Current round for {author=} and {priority=} is bigger than {round=}")
             return
         
         self.aba_state.addConf(author,priority,round,votes,sender)
+
+        logger.debug(f"UponABAConf {tag}: current len for conf {author=},{priority=},{round=}: {self.aba_state.lenConf(author,priority,round)}. Quorum={self.getQuorum()}")
         
-        print(f"will test quorum, {self.aba_state.lenConf(author,priority,round)=},{self.getQuorum()=}")
         if self.aba_state.lenConf(author,priority,round) >= self.getQuorum():
 
             coin = Coin(author,priority,round)
-            print(f"{coin=}")
+            logger.debug(f"{coin=}")
 
             conf_values = self.aba_state.getConfValues(author,priority,round)
             
             init_vote = coin if len(conf_values) == 2 else conf_values[0]
             if not self.aba_state.hasSentInit(author,priority,round+1,init_vote):
 
+                logger.debug(f"UponABAConf {tag}: sending ABAInit {author=},{priority=},round={round+1},{init_vote=}")
                 message = messages_pb2.ABAInit()
                 message.author = author
                 message.priority = priority
@@ -486,6 +546,9 @@ class node:
             if len(conf_values) == 1 and conf_values[0] == coin:
 
                 if not self.aba_state.hasSentFinish(author,priority,coin):
+                                    
+                    logger.debug(f"UponABAConf {tag}: sending ABAFinish {author=},{priority=},{coin=}")
+
 
                     message = messages_pb2.ABAFinish()
                     message.author = author
@@ -497,22 +560,33 @@ class node:
                     self.broadcast(message,msg_type=msg_type)
                     self.aba_state.setSentFinish(author,priority,coin)
 
-    def uponABAFinish(self,message):
+    def uponABAFinish(self,message,logger):
 
         author = message.author
         priority = message.priority
         vote = message.vote
         sender = message.sender
 
+        tag = logger.getTag()
+
+
+
+        logger.debug(f"UponABAFinish {tag}: {message}")
+
         if self.aba_state.currentPriority(author) > priority:
+            logger.debug(f"UponABAFinish {tag}: old message. Current priority for {author=} is bigger than {priority=}")
             return
         
 
         self.aba_state.addFinish(author,priority,vote,sender)
 
+        logger.debug(f"UponABAFinish {tag}: current len for finish {author=},{priority=},{vote=}: {self.aba_state.lenFinish(author,priority,vote)}. Partial Quorum={self.getPartialQuorum()}")
+
         if self.aba_state.lenFinish(author,priority,vote) >= self.getPartialQuorum():
 
             if not self.aba_state.hasSentFinish(author,priority,vote):
+                    
+                logger.debug(f"UponABAFinish {tag}: sending ABAFinish {author=},{priority=},{vote=}")
 
                 message = messages_pb2.ABAFinish()
                 message.author = author
@@ -524,19 +598,22 @@ class node:
                 self.broadcast(message,msg_type=msg_type)
                 self.aba_state.setSentFinish(author,priority,vote)
         
+        logger.debug(f"UponABAFinish {tag}: current len for finish {author=},{priority=},{vote=}: {self.aba_state.lenFinish(author,priority,vote)}. Quorum={self.getQuorum()}. State for aba: {self.aba_state.isDecided(author,priority)}")
+
+
         if self.aba_state.lenFinish(author,priority,vote) >= self.getQuorum() and not self.aba_state.isDecided(author,priority):
             self.aba_state.setDecided(author,priority,vote)
             self.aba_state.setPriority(author,priority+1)
-            print(f"Decided ABA for: {author=},{priority=}")
+            logger.debug(f"UponABAFinish {tag}: Decided ABA for {author=},{priority=} : {vote=}")
             if author == self.node_number:
-                print(f"{Timer.endTimer(f'{priority}')} microseconds ({priority=})")
-                vcbc_thread = threading.Thread(target=self.startNewVCBC, args=(priority+1,))
-                vcbc_thread.start()
+                logger.info(f"UponABAFinish {tag}: {Timer.endTimer(f'{priority}')} microseconds ({priority=})")
+                # vcbc_thread = threading.Thread(target=self.startNewVCBC, args=(priority+1,))
+                # vcbc_thread.start()
     
     def startNewVCBC(self,priority):
 
         if self.priority == priority:
-            time.sleep(3)
+            time.sleep(1)
             Timer.startTimer(f'{self.priority}')
             self.StartVCBC(f'data_from_priority{self.priority}')
 
@@ -544,17 +621,35 @@ class node:
 
 
 import sys
+import argparse
 
-if __name__ == '__main__':
-    # serverT = threading.Thread(target=server, args=())
-    # serverT.start()
-    # clientT = threading.Thread(target=client, args=())
-    # clientT.start()
-    print(sys.argv)
-    node1 = node(int(sys.argv[1]),int(sys.argv[2]))
-    if int(sys.argv[1]) == 1:
-        node1.createPeriodicalVCBC()
-    # node1_thread = threading.Thread(target=node, args=(1))
-    # node1_thread.start()
-    # node2_thread = threading.Thread(target=node, args=(2))
-    # node2_thread.start()
+
+parser = argparse.ArgumentParser()
+
+subparsers = parser.add_subparsers(dest='command', required=True)
+
+# 'launch' sub-command
+launch_parser = subparsers.add_parser('launch')
+launch_parser.add_argument('-id', '--node_id', type=int, help='node id')
+launch_parser.add_argument('-n', '--node_count', type=int, help='node count')
+launch_parser.add_argument('-v', '--verbose', type=int, required = False, help='verbose style (0: silence mode, 1: full verbose, 2: log only metrics)')
+launch_parser.add_argument('-o', '--output_file', type=str, required = False, help='output file name')
+
+if __name__ == "__main__":
+
+    args = parser.parse_args()
+
+    if args.command == 'launch':
+        id = args.node_id
+        node_count = args.node_count
+        verbose = 2
+        if args.verbose != None:
+            verbose = args.verbose
+        
+        output_filename = None
+        if args.output_file != None:
+            output_filename = None
+
+        node_instance = node(id,node_count,output_file = output_filename,verbose = verbose)
+        if id == 1:
+            node_instance.createPeriodicalVCBC(40)

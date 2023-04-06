@@ -1,25 +1,41 @@
 import subprocess
 import signal
+from signal import SIGINT
 import sys
 import os
+import argparse
 
-N = int(sys.argv[1])
+
+
+# N = int(sys.argv[1])
+
+# verbose_mode = int(sys.argv[2])
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-n', '--node_count', type=int, help='node count')
+parser.add_argument('-v', '--verbose', type=int, required = False, help='verbose style (0: silence mode, 1: full verbose, 2: log only metrics)')
+
+
+args = parser.parse_args()
+
+N = args.node_count
+verbose_mode = 2
+if args.verbose != None:
+    verbose_mode = args.verbose
+
+if verbose_mode not in [0,1,2]:
+    raise Exception("Verbose mode should be 0, 1 or 2")
 
 # Create a list to hold the Popen objects
 node_procs = []
 
-# # Kill all processes running on ports 1350 to 135N-1
-# for i in range(1351, 1350+N+1):
-#     cmd = f'lsof -t -i tcp:{i} | xargs kill -9'
-#     os.system(cmd)
-
 # Launch the node.py processes
 for i in range(1, N+1):
-    out_file = open(f"out{i}.txt", "w")
+    # out_file = open(f"out{i}.log", "w")
     proc = subprocess.Popen(
-        ["python3", "node.py", str(i), str(N)],
-        stdout=out_file,
-        stderr=out_file,
+        ["python3", "node.py","launch", "-id",str(i),"-n", str(N),"-v",str(verbose_mode)],
+        # stdout=out_file,
+        # stderr=out_file,
     )
     node_procs.append(proc)
 
@@ -27,7 +43,10 @@ for i in range(1, N+1):
 def signal_handler(sig, frame):
     # Loop through the Popen objects and terminate them
     for proc in node_procs:
-        proc.terminate()
+        proc.send_signal(SIGINT)
+        # proc.terminate()
+    for proc in node_procs:
+        proc.wait()
     sys.exit(0)
 
 # Set the signal handler for CTRL+C

@@ -1,0 +1,82 @@
+2023-04-05 22:35:34,741 - logger - INFO -  UponABAFinish 70: Decided ABA for author=1,priority=0 : vote=1
+2023-04-05 22:35:34,742 - logger - INFO -  UponABAFinish 70: 9769 microseconds (priority=0)
+2023-04-05 22:35:38,039 - logger - INFO -  UponABAFinish 140: Decided ABA for author=1,priority=1 : vote=1
+2023-04-05 22:35:38,040 - logger - INFO -  UponABAFinish 140: 12397 microseconds (priority=1)
+2023-04-05 22:35:41,322 - logger - INFO -  UponABAFinish 194: Decided ABA for author=1,priority=2 : vote=1
+2023-04-05 22:35:41,322 - logger - INFO -  UponABAFinish 194: 10896 microseconds (priority=2)
+2023-04-05 22:35:44,635 - logger - INFO -  UponABAFinish 235: Decided ABA for author=1,priority=3 : vote=1
+2023-04-05 22:35:44,636 - logger - INFO -  UponABAFinish 235: 9347 microseconds (priority=3)
+2023-04-05 22:35:47,917 - logger - INFO -  UponABAFinish 264: Decided ABA for author=1,priority=4 : vote=1
+2023-04-05 22:35:47,918 - logger - INFO -  UponABAFinish 264: 6634 microseconds (priority=4)
+2023-04-05 22:35:51,208 - logger - INFO -  UponABAFinish 305: Decided ABA for author=1,priority=5 : vote=1
+2023-04-05 22:35:51,209 - logger - INFO -  UponABAFinish 305: 7714 microseconds (priority=5)
+2023-04-05 22:35:54,518 - logger - INFO -  UponABAFinish 337: Decided ABA for author=1,priority=6 : vote=1
+2023-04-05 22:35:54,518 - logger - INFO -  UponABAFinish 337: 6140 microseconds (priority=6)
+2023-04-05 22:35:57,807 - logger - INFO -  UponABAFinish 379: Decided ABA for author=1,priority=7 : vote=1
+2023-04-05 22:35:57,807 - logger - INFO -  UponABAFinish 379: 7663 microseconds (priority=7)
+2023-04-05 22:36:01,093 - logger - INFO -  UponABAFinish 408: Decided ABA for author=1,priority=8 : vote=1
+2023-04-05 22:36:01,094 - logger - INFO -  UponABAFinish 408: 4949 microseconds (priority=8)
+2023-04-05 22:36:04,392 - logger - INFO -  UponABAFinish 451: Decided ABA for author=1,priority=9 : vote=1
+2023-04-05 22:36:04,393 - logger - INFO -  UponABAFinish 451: 9641 microseconds (priority=9)
+2023-04-05 22:36:07,683 - logger - INFO -  UponABAFinish 480: Decided ABA for author=1,priority=10 : vote=1
+2023-04-05 22:36:07,684 - logger - INFO -  UponABAFinish 480: 5886 microseconds (priority=10)
+2023-04-05 22:36:10,983 - logger - INFO -  UponABAFinish 513: Decided ABA for author=1,priority=11 : vote=1
+2023-04-05 22:36:10,983 - logger - INFO -  UponABAFinish 513: 5913 microseconds (priority=11)
+2023-04-05 22:36:14,279 - logger - INFO -  UponABAFinish 543: Decided ABA for author=1,priority=12 : vote=1
+2023-04-05 22:36:14,279 - logger - INFO -  UponABAFinish 543: 6802 microseconds (priority=12)
+2023-04-05 22:36:17,590 - logger - INFO -  UponABAFinish 592: Decided ABA for author=1,priority=13 : vote=1
+2023-04-05 22:36:17,590 - logger - INFO -  UponABAFinish 592: 11080 microseconds (priority=13)
+2023-04-05 22:36:20,879 - logger - INFO -  UponABAFinish 638: Decided ABA for author=1,priority=14 : vote=1
+2023-04-05 22:36:20,879 - logger - INFO -  UponABAFinish 638: 10681 microseconds (priority=14)
+2023-04-05 22:36:24,182 - logger - INFO -  UponABAFinish 668: Decided ABA for author=1,priority=15 : vote=1
+2023-04-05 22:36:24,182 - logger - INFO -  UponABAFinish 668: 7067 microseconds (priority=15)
+2023-04-05 22:36:27,468 - logger - INFO -  UponABAFinish 695: Decided ABA for author=1,priority=16 : vote=1
+2023-04-05 22:36:27,468 - logger - INFO -  UponABAFinish 695: 6617 microseconds (priority=16)
+2023-04-05 22:36:30,792 - logger - INFO -  UponABAFinish 788: Decided ABA for author=1,priority=17 : vote=1
+2023-04-05 22:36:30,792 - logger - INFO -  UponABAFinish 788: 17470 microseconds (priority=17)
+2023-04-05 22:36:34,071 - logger - INFO -  UponABAFinish 867: Decided ABA for author=1,priority=18 : vote=1
+2023-04-05 22:36:34,072 - logger - INFO -  UponABAFinish 867: 13362 microseconds (priority=18)
+2023-04-05 22:36:37,355 - logger - INFO -  UponABAFinish 929: Decided ABA for author=1,priority=19 : vote=1
+2023-04-05 22:36:37,356 - logger - INFO -  UponABAFinish 929: 13766 microseconds (priority=19)
+2023-04-05 22:36:40,639 - logger - INFO -  UponABAFinish 986: Decided ABA for author=1,priority=20 : vote=1
+2023-04-05 22:36:40,640 - logger - INFO -  UponABAFinish 986: 10855 microseconds (priority=20)
+2023-04-05 22:36:43,929 - logger - INFO -  UponABAFinish 1025: Decided ABA for author=1,priority=21 : vote=1
+2023-04-05 22:36:43,929 - logger - INFO -  UponABAFinish 1025: 8595 microseconds (priority=21)
+2023-04-05 22:36:47,211 - logger - INFO -  UponABAFinish 1059: Decided ABA for author=1,priority=22 : vote=1
+2023-04-05 22:36:47,211 - logger - INFO -  UponABAFinish 1059: 6679 microseconds (priority=22)
+2023-04-05 22:36:50,508 - logger - INFO -  UponABAFinish 1088: Decided ABA for author=1,priority=23 : vote=1
+2023-04-05 22:36:50,509 - logger - INFO -  UponABAFinish 1088: 5825 microseconds (priority=23)
+2023-04-05 22:36:53,795 - logger - INFO -  UponABAFinish 1116: Decided ABA for author=1,priority=24 : vote=1
+2023-04-05 22:36:53,796 - logger - INFO -  UponABAFinish 1116: 6905 microseconds (priority=24)
+2023-04-05 22:36:57,076 - logger - INFO -  UponABAFinish 1159: Decided ABA for author=1,priority=25 : vote=1
+2023-04-05 22:36:57,077 - logger - INFO -  UponABAFinish 1159: 5136 microseconds (priority=25)
+2023-04-05 22:37:00,362 - logger - INFO -  UponABAFinish 1190: Decided ABA for author=1,priority=26 : vote=1
+2023-04-05 22:37:00,362 - logger - INFO -  UponABAFinish 1190: 6319 microseconds (priority=26)
+2023-04-05 22:37:03,652 - logger - INFO -  UponABAFinish 1244: Decided ABA for author=1,priority=27 : vote=1
+2023-04-05 22:37:03,653 - logger - INFO -  UponABAFinish 1244: 11905 microseconds (priority=27)
+2023-04-05 22:37:06,937 - logger - INFO -  UponABAFinish 1285: Decided ABA for author=1,priority=28 : vote=1
+2023-04-05 22:37:06,937 - logger - INFO -  UponABAFinish 1285: 9480 microseconds (priority=28)
+2023-04-05 22:37:10,220 - logger - INFO -  UponABAFinish 1313: Decided ABA for author=1,priority=29 : vote=1
+2023-04-05 22:37:10,220 - logger - INFO -  UponABAFinish 1313: 5528 microseconds (priority=29)
+2023-04-05 22:37:13,515 - logger - INFO -  UponABAFinish 1381: Decided ABA for author=1,priority=30 : vote=1
+2023-04-05 22:37:13,515 - logger - INFO -  UponABAFinish 1381: 13457 microseconds (priority=30)
+2023-04-05 22:37:16,799 - logger - INFO -  UponABAFinish 1437: Decided ABA for author=1,priority=31 : vote=1
+2023-04-05 22:37:16,800 - logger - INFO -  UponABAFinish 1437: 13021 microseconds (priority=31)
+2023-04-05 22:37:20,086 - logger - INFO -  UponABAFinish 1478: Decided ABA for author=1,priority=32 : vote=1
+2023-04-05 22:37:20,087 - logger - INFO -  UponABAFinish 1478: 16086 microseconds (priority=32)
+2023-04-05 22:37:23,363 - logger - INFO -  UponABAFinish 1508: Decided ABA for author=1,priority=33 : vote=1
+2023-04-05 22:37:23,364 - logger - INFO -  UponABAFinish 1508: 6274 microseconds (priority=33)
+2023-04-05 22:37:26,649 - logger - INFO -  UponABAFinish 1538: Decided ABA for author=1,priority=34 : vote=1
+2023-04-05 22:37:26,650 - logger - INFO -  UponABAFinish 1538: 6662 microseconds (priority=34)
+2023-04-05 22:37:29,934 - logger - INFO -  UponABAFinish 1568: Decided ABA for author=1,priority=35 : vote=1
+2023-04-05 22:37:29,934 - logger - INFO -  UponABAFinish 1568: 5920 microseconds (priority=35)
+2023-04-05 22:37:33,220 - logger - INFO -  UponABAFinish 1608: Decided ABA for author=1,priority=36 : vote=1
+2023-04-05 22:37:33,221 - logger - INFO -  UponABAFinish 1608: 7840 microseconds (priority=36)
+2023-04-05 22:37:36,504 - logger - INFO -  UponABAFinish 1639: Decided ABA for author=1,priority=37 : vote=1
+2023-04-05 22:37:36,504 - logger - INFO -  UponABAFinish 1639: 6509 microseconds (priority=37)
+2023-04-05 22:37:39,790 - logger - INFO -  UponABAFinish 1680: Decided ABA for author=1,priority=38 : vote=1
+2023-04-05 22:37:39,790 - logger - INFO -  UponABAFinish 1680: 7840 microseconds (priority=38)
+2023-04-05 22:37:43,074 - logger - INFO -  UponABAFinish 1710: Decided ABA for author=1,priority=39 : vote=1
+2023-04-05 22:37:43,075 - logger - INFO -  UponABAFinish 1710: 7649 microseconds (priority=39)
+2023-04-05 22:37:46,357 - logger - INFO -  UponABAFinish 1740: Decided ABA for author=1,priority=40 : vote=1
+2023-04-05 22:37:46,357 - logger - INFO -  UponABAFinish 1740: 3857 microseconds (priority=40)

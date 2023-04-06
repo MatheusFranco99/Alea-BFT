@@ -213,7 +213,8 @@ class ABAState:
         
     def setSentAux(self,author,priority,round,vote):
         self.setupRound(author,priority,round)
-        return self.abas[author][priority][round].setSentAux(vote)
+        self.abas[author][priority][round].setSentAux(vote)
+
         
     def lenAux(self,author,priority,round):
         self.setupRound(author,priority,round)
