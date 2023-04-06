@@ -1,6 +1,10 @@
 # Alea-BFT
 
-![](md_resources/aleabft.png)
+<p align="center">
+  <img src="md_resources/aleabft.png">
+</p>
+
+<!-- ![](md_resources/aleabft.png) -->
 
 Alea-BFT ([Alea-BFT arXiv](https://arxiv.org/abs/2202.02071)) protocol implementation in python3.
 
