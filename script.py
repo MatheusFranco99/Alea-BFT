@@ -14,6 +14,9 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--node_count', type=int, help='node count')
 parser.add_argument('-v', '--verbose', type=int, required = False, help='verbose style (0: silence mode, 1: full verbose, 2: log only metrics)')
+parser.add_argument('-t', '--time', type=float, required = False, help='time in seconds that the execution will run (after startup)')
+parser.add_argument('-c', '--counter', type=int, required = True, help='number of transactions (VCBC counter)')
+parser.add_argument('-d', '--delay', type=float, required = False, help='delay between transactions (in milliseconds)')
 
 
 args = parser.parse_args()
@@ -26,14 +29,29 @@ if args.verbose != None:
 if verbose_mode not in [0,1,2]:
     raise Exception("Verbose mode should be 0, 1 or 2")
 
+exec_time = None
+if args.time != None:
+    exec_time = args.time
+
+transactions_num = args.counter
+
+delay = args.delay
+
 # Create a list to hold the Popen objects
 node_procs = []
 
 # Launch the node.py processes
 for i in range(1, N+1):
     # out_file = open(f"out{i}.log", "w")
+    command = ["python3", "node.py","launch", "-id",str(i),"-n", str(N),"-v",str(verbose_mode),"-c",str(transactions_num)]
+
+    if exec_time != None:
+        command = command + ["-t",str(exec_time)]
+    if delay != None:
+        command = command + ["-d",str(delay)]
+
     proc = subprocess.Popen(
-        ["python3", "node.py","launch", "-id",str(i),"-n", str(N),"-v",str(verbose_mode)],
+        command,
         # stdout=out_file,
         # stderr=out_file,
     )

@@ -9,6 +9,7 @@ from coin import Coin
 from aba_state import ABAState
 from timer import Timer
 from logger import Logger
+import os
 
 # Define message types
 MESSAGE_TYPES = {
@@ -55,6 +56,7 @@ class node:
         self.logger = Logger(self.output_file,verbose_mode=self.verbose)
     
         self.lock = threading.Lock()
+        self.connections = {}
         
 
 
@@ -111,6 +113,9 @@ class node:
         for sock in self.connections.values():
             sock.close()
 
+        for sock in self.server_connections.values():
+            sock.close()
+
         # Close the server socket
         self.sock.close()
 
@@ -128,7 +133,7 @@ class node:
         self.sock.listen(self.number_of_operators+1)
 
         # dictionary of persistent connections
-        connections = {}
+        self.server_connections = {}
 
         while True:
             # wait for a connection
@@ -136,22 +141,22 @@ class node:
             conn, addr = self.sock.accept()
 
             # if the connection is already in the dictionary of connections, close it
-            if addr in connections:
+            if addr in self.server_connections:
                 self.logger.debug("Connection from %s:%d already exists, closing new connection" % addr)
                 conn.close()
             else:
                 # handle the connection in a new thread
-                handle_thread = threading.Thread(target=self.handle_connection, args=(conn, addr, connections))
+                handle_thread = threading.Thread(target=self.handle_connection, args=(conn, addr))
                 handle_thread.start()
     
     # HANDLE CONNECTION FROM OTHER NODE
     # KEEPS CONNECTION PERSISTENT
     # GETS MESSAGE AND CALLS PROCESS_MSG
-    def handle_connection(self,conn, addr, connections):
+    def handle_connection(self,conn, addr):
         self.logger.debug("Accepted connection from %s:%d" % addr)
 
         # add the connection to the dictionary of connections
-        connections[addr] = conn
+        self.server_connections[addr] = conn
 
         try:
             while True:
@@ -162,7 +167,7 @@ class node:
             self.logger.warning("Error handling connection from %s:%d: %s %s" % (addr[0], addr[1], str(e),str(e.__traceback__)))
 
         # remove the connection from the dictionary of connections
-        del connections[addr]
+        del self.server_connections[addr]
 
         # close the connection
         conn.close()
@@ -290,15 +295,75 @@ class node:
             sock = self.getSocket(i)
             sock.sendall(data)
 
-    def createPeriodicalVCBC(self,num_instances):
-        step = 1
-        while step <= num_instances+1:
-            step += 1
+    def createPeriodicalVCBC(self,num_instances, exec_time, delay):
+        # step = 1
+
+        # while step <= num_instances+1:
+        #     step += 1
             
-            time.sleep(3)
-            Timer.startTimer(f'{self.priority}')
-            self.StartVCBC(f'data_from_priority{self.priority}')
-            time.sleep(self.number_of_operators * 0.07)
+        #     time.sleep(3)
+        #     Timer.startTimer(f'{self.priority}')
+        #     self.StartVCBC(f'data_from_priority{self.priority}')
+        #     time.sleep(self.number_of_operators * 0.07)
+        
+        
+        if exec_time is not None:
+            # start throughput timer
+            Timer.startTimer('throughput_timer')
+
+            # get start time
+            start_time = time.time()
+
+            # compute delay
+            if delay == None:
+                delay = exec_time / (num_instances + 1)
+
+            # startVCBC cycle
+            for i in range(num_instances):
+
+                # check if time has ended
+                elapsed_time = time.time() - start_time
+                if elapsed_time >= exec_time:
+                    t = Timer.endTimer('throughput_timer')
+                    self.logger.info(f"Throughput time: {t} (microseconds)")
+                    self.close()
+                    sys.exit(0)
+                
+                # starts VCBC
+                Timer.startTimer(f'{self.priority}')
+                self.StartVCBC(f"data_from_priority{self.priority}")
+
+                # wait delay
+                time.sleep(delay)
+                
+            # check if time has ended
+            elapsed_time = time.time() - start_time
+            if elapsed_time >= exec_time:
+                t = Timer.endTimer('throughput_timer')
+                self.logger.info(f"Throughput time: {t} (microseconds)")
+                self.close()
+                sys.exit(0)
+
+            # wait rest of time
+            time.sleep(exec_time - (num_instances * delay))
+
+            # terminate
+            t = Timer.endTimer('throughput_timer')
+            self.logger.info(f"Throughput time: {t} (microseconds)")
+            self.close()
+            sys.exit(0)
+
+
+        else:
+            # compute delay
+            if delay == None:
+                delay = self.number_of_operators * 0.07
+
+            for i in range(num_instances):
+                Timer.startTimer(f'{self.priority}')
+                self.StartVCBC(f"data_from_priority{self.priority}")
+                time.sleep(delay)
+            
             
         
 
@@ -634,6 +699,10 @@ launch_parser.add_argument('-id', '--node_id', type=int, help='node id')
 launch_parser.add_argument('-n', '--node_count', type=int, help='node count')
 launch_parser.add_argument('-v', '--verbose', type=int, required = False, help='verbose style (0: silence mode, 1: full verbose, 2: log only metrics)')
 launch_parser.add_argument('-o', '--output_file', type=str, required = False, help='output file name')
+launch_parser.add_argument('-t', '--time', type=float, required = False, help='time in seconds that the execution will run (after startup)')
+launch_parser.add_argument('-c', '--counter', type=int, required = True, help='number of transactions (VCBC counter)')
+launch_parser.add_argument('-d', '--delay', type=float, required = False, help='delay between transactions (in milliseconds)')
+
 
 if __name__ == "__main__":
 
@@ -652,4 +721,11 @@ if __name__ == "__main__":
 
         node_instance = node(id,node_count,output_file = output_filename,verbose = verbose)
         if id == 1:
-            node_instance.createPeriodicalVCBC(40)
+            transactions_num = args.counter
+            exec_time = None
+            delay = None
+            if args.delay != None:
+                delay = args.delay/1000
+            if args.time != None:
+                exec_time = args.time
+            node_instance.createPeriodicalVCBC(transactions_num,exec_time,delay)
