@@ -1,0 +1,58 @@
+2023-04-06 03:32:00,553 - logger - WARNING -  Error handling connection from 127.0.0.1:54928: Connection closed before message length header received <traceback object at 0x7f3f1b4aea40>
+2023-04-06 03:32:00,591 - logger - WARNING -  Error handling connection from 127.0.0.1:54944: Connection closed before message length header received <traceback object at 0x7f3f1b4d0840>
+2023-04-06 03:32:00,619 - logger - WARNING -  Error handling connection from 127.0.0.1:55014: Connection closed before message length header received <traceback object at 0x7f3f1b4d0980>
+2023-04-06 03:32:00,623 - logger - WARNING -  Error handling connection from 127.0.0.1:54950: Connection closed before message length header received <traceback object at 0x7f3f1b4d0a40>
+2023-04-06 03:32:00,626 - logger - WARNING -  Error handling connection from 127.0.0.1:54956: Connection closed before message length header received <traceback object at 0x7f3f1b4ad580>
+2023-04-06 03:32:00,629 - logger - WARNING -  Error handling connection from 127.0.0.1:54978: Connection closed before message length header received <traceback object at 0x7f3f1b4d0ac0>
+2023-04-06 03:32:00,635 - logger - WARNING -  Error handling connection from 127.0.0.1:54972: Connection closed before message length header received <traceback object at 0x7f3f1b4d0cc0>
+2023-04-06 03:32:00,667 - logger - WARNING -  Error handling connection from 127.0.0.1:54992: Connection closed before message length header received <traceback object at 0x7f3f1b4d1300>
+2023-04-06 03:32:00,701 - logger - INFO -  UponABAFinish 437: 167889 microseconds (priority=0)
+2023-04-06 03:32:00,861 - logger - INFO -  UponABAFinish 855: 121634 microseconds (priority=1)
+2023-04-06 03:32:01,037 - logger - INFO -  UponABAFinish 1173: 93418 microseconds (priority=2)
+2023-04-06 03:32:01,216 - logger - INFO -  UponABAFinish 1422: 56199 microseconds (priority=3)
+2023-04-06 03:32:01,414 - logger - INFO -  UponABAFinish 1603: 45603 microseconds (priority=4)
+2023-04-06 03:32:01,650 - logger - INFO -  UponABAFinish 1859: 74530 microseconds (priority=5)
+2023-04-06 03:32:01,839 - logger - INFO -  UponABAFinish 2034: 46646 microseconds (priority=6)
+2023-04-06 03:32:02,066 - logger - INFO -  UponABAFinish 2290: 69392 microseconds (priority=7)
+2023-04-06 03:32:02,261 - logger - INFO -  UponABAFinish 2469: 59939 microseconds (priority=8)
+2023-04-06 03:32:02,485 - logger - INFO -  UponABAFinish 2711: 76727 microseconds (priority=9)
+2023-04-06 03:32:02,672 - logger - INFO -  UponABAFinish 2893: 58940 microseconds (priority=10)
+2023-04-06 03:32:02,874 - logger - INFO -  UponABAFinish 3066: 53144 microseconds (priority=11)
+2023-04-06 03:32:03,087 - logger - INFO -  UponABAFinish 3247: 62429 microseconds (priority=12)
+2023-04-06 03:32:03,337 - logger - INFO -  UponABAFinish 3566: 108608 microseconds (priority=13)
+2023-04-06 03:32:03,529 - logger - INFO -  UponABAFinish 3815: 81371 microseconds (priority=14)
+2023-04-06 03:32:03,715 - logger - INFO -  UponABAFinish 3996: 54975 microseconds (priority=15)
+2023-04-06 03:32:03,945 - logger - INFO -  UponABAFinish 4176: 64882 microseconds (priority=16)
+2023-04-06 03:32:04,276 - logger - INFO -  UponABAFinish 4701: 180025 microseconds (priority=17)
+2023-04-06 03:32:04,446 - logger - INFO -  UponABAFinish 5201: 143507 microseconds (priority=18)
+2023-04-06 03:32:04,614 - logger - INFO -  UponABAFinish 5589: 107615 microseconds (priority=19)
+2023-04-06 03:32:04,805 - logger - INFO -  UponABAFinish 5910: 92266 microseconds (priority=20)
+2023-04-06 03:32:05,007 - logger - INFO -  UponABAFinish 6180: 70521 microseconds (priority=21)
+2023-04-06 03:32:05,191 - logger - INFO -  UponABAFinish 6366: 49095 microseconds (priority=22)
+2023-04-06 03:32:05,416 - logger - INFO -  UponABAFinish 6538: 49425 microseconds (priority=23)
+2023-04-06 03:32:05,575 - logger - INFO -  Throughput time: 5042078 (microseconds)
+2023-04-06 03:32:05,576 - logger - WARNING -  Error handling connection from 127.0.0.1:54922: Connection closed before message length header received <traceback object at 0x7f3f1b4fdfc0>
+2023-04-06 03:32:14,066 - logger - WARNING -  Error handling connection from 127.0.0.1:55030: Connection closed before message length header received <traceback object at 0x7f3f1b4ad840>
+2023-04-06 03:32:14,068 - logger - WARNING -  Error handling connection from 127.0.0.1:55000: Connection closed before message length header received <traceback object at 0x7f3f1b4ad340>
+2023-04-06 03:32:14,069 - logger - WARNING -  Error handling connection from 127.0.0.1:54818: Connection closed before message length header received <traceback object at 0x7f3f1b4ad040>
+2023-04-06 03:32:14,071 - logger - WARNING -  Error handling connection from 127.0.0.1:54872: Connection closed before message length header received <traceback object at 0x7f3f1b4ade80>
+2023-04-06 03:32:14,071 - logger - WARNING -  Error handling connection from 127.0.0.1:55068: Connection closed before message length header received <traceback object at 0x7f3f1b4ad980>
+2023-04-06 03:32:14,074 - logger - WARNING -  Error handling connection from 127.0.0.1:54858: Connection closed before message length header received <traceback object at 0x7f3f1b49ee40>
+2023-04-06 03:32:14,075 - logger - WARNING -  Error handling connection from 127.0.0.1:54780: Connection closed before message length header received <traceback object at 0x7f3f1b4ad240>
+2023-04-06 03:32:14,075 - logger - WARNING -  Error handling connection from 127.0.0.1:55086: Connection closed before message length header received <traceback object at 0x7f3f1b4ad180>
+2023-04-06 03:32:14,078 - logger - WARNING -  Error handling connection from 127.0.0.1:54806: Connection closed before message length header received <traceback object at 0x7f3f1bae6e00>
+2023-04-06 03:32:14,077 - logger - WARNING -  Error handling connection from 127.0.0.1:55054: Connection closed before message length header received <traceback object at 0x7f3f1bae6a40>
+2023-04-06 03:32:14,077 - logger - WARNING -  Error handling connection from 127.0.0.1:54842: Connection closed before message length header received <traceback object at 0x7f3f1b4d29c0>
+2023-04-06 03:32:14,078 - logger - WARNING -  Error handling connection from 127.0.0.1:55080: Connection closed before message length header received <traceback object at 0x7f3f1bae7080>
+2023-04-06 03:32:14,081 - logger - WARNING -  Error handling connection from 127.0.0.1:54924: Connection closed before message length header received <traceback object at 0x7f3f1bae7380>
+2023-04-06 03:32:14,082 - logger - WARNING -  Error handling connection from 127.0.0.1:54900: Connection closed before message length header received <traceback object at 0x7f3f1bae7a40>
+2023-04-06 03:32:14,082 - logger - WARNING -  Error handling connection from 127.0.0.1:54820: Connection closed before message length header received <traceback object at 0x7f3f1bae7cc0>
+2023-04-06 03:32:14,082 - logger - WARNING -  Error handling connection from 127.0.0.1:54908: Connection closed before message length header received <traceback object at 0x7f3f1b8ec0c0>
+2023-04-06 03:32:14,083 - logger - WARNING -  Error handling connection from 127.0.0.1:54854: Connection closed before message length header received <traceback object at 0x7f3f1b49ff80>
+2023-04-06 03:32:14,083 - logger - WARNING -  Error handling connection from 127.0.0.1:55084: Connection closed before message length header received <traceback object at 0x7f3f1b4ae480>
+2023-04-06 03:32:14,086 - logger - WARNING -  Error handling connection from 127.0.0.1:54766: Connection closed before message length header received <traceback object at 0x7f3f1b8ec900>
+2023-04-06 03:32:14,087 - logger - WARNING -  Error handling connection from 127.0.0.1:54884: Connection closed before message length header received <traceback object at 0x7f3f1b8ecd80>
+2023-04-06 03:32:14,083 - logger - WARNING -  Error handling connection from 127.0.0.1:54782: Connection closed before message length header received <traceback object at 0x7f3f1b8ec600>
+2023-04-06 03:32:14,087 - logger - WARNING -  Error handling connection from 127.0.0.1:55044: Connection closed before message length header received <traceback object at 0x7f3f1b8ecfc0>
+2023-04-06 03:32:14,088 - logger - WARNING -  Error handling connection from 127.0.0.1:54816: Connection closed before message length header received <traceback object at 0x7f3f1b8ed380>
+2023-04-06 03:32:14,089 - logger - WARNING -  Error handling connection from 127.0.0.1:54836: Connection closed before message length header received <traceback object at 0x7f3f1b8ed6c0>

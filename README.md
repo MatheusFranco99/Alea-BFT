@@ -56,8 +56,6 @@ If the delay is not set, there are two possibilities.
 - If the total time is set, the delay is set to $total time / (num_transactions + 1)$.
 - If the total time is not set, the delay is set to $n*0.07$ seconds where $n$ is the number of nodes.
 
-## Testing behavior
-
 ## Metrics analysis
 Both latency and throughput can be analysed. Refer to this [documentation](latency_analysis/README.md) for the latency analysis program and to this [documentation](throughput_analysis/README.md) for the throughput analysis program.
 

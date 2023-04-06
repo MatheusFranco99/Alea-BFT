@@ -1,0 +1,102 @@
+2023-04-06 03:32:58,655 - logger - WARNING -  Error handling connection from 127.0.0.1:33264: Connection closed before message length header received <traceback object at 0x7efdfb143280>
+2023-04-06 03:32:58,659 - logger - WARNING -  Error handling connection from 127.0.0.1:33346: Connection closed before message length header received <traceback object at 0x7efdfb160900>
+2023-04-06 03:32:58,661 - logger - WARNING -  Error handling connection from 127.0.0.1:33340: Connection closed before message length header received <traceback object at 0x7efdfb160fc0>
+2023-04-06 03:32:58,670 - logger - WARNING -  Error handling connection from 127.0.0.1:33356: Connection closed before message length header received <traceback object at 0x7efdfb161800>
+2023-04-06 03:32:58,677 - logger - WARNING -  Error handling connection from 127.0.0.1:33286: Connection closed before message length header received <traceback object at 0x7efdfb161a00>
+2023-04-06 03:32:58,718 - logger - WARNING -  Error handling connection from 127.0.0.1:33298: Connection closed before message length header received <traceback object at 0x7efdfb163d40>
+2023-04-06 03:32:58,720 - logger - WARNING -  Error handling connection from 127.0.0.1:33324: Connection closed before message length header received <traceback object at 0x7efdfb174300>
+2023-04-06 03:32:58,732 - logger - WARNING -  Error handling connection from 127.0.0.1:33280: Connection closed before message length header received <traceback object at 0x7efdfb174440>
+2023-04-06 03:32:58,735 - logger - WARNING -  Error handling connection from 127.0.0.1:33266: Connection closed before message length header received <traceback object at 0x7efdfb174500>
+2023-04-06 03:32:58,767 - logger - WARNING -  Error handling connection from 127.0.0.1:33400: Connection closed before message length header received <traceback object at 0x7efdfb175540>
+2023-04-06 03:32:58,769 - logger - WARNING -  Error handling connection from 127.0.0.1:33368: Connection closed before message length header received <traceback object at 0x7efdfb175740>
+2023-04-06 03:32:58,773 - logger - WARNING -  Error handling connection from 127.0.0.1:33370: Connection closed before message length header received <traceback object at 0x7efdfb160d80>
+2023-04-06 03:32:58,778 - logger - WARNING -  Error handling connection from 127.0.0.1:33312: Connection closed before message length header received <traceback object at 0x7efdfb160d40>
+2023-04-06 03:32:58,801 - logger - WARNING -  Error handling connection from 127.0.0.1:33386: Connection closed before message length header received <traceback object at 0x7efdfb175e00>
+2023-04-06 03:32:58,805 - logger - WARNING -  Error handling connection from 127.0.0.1:33452: Connection closed before message length header received <traceback object at 0x7efdfb175e00>
+2023-04-06 03:32:58,833 - logger - WARNING -  Error handling connection from 127.0.0.1:33408: Connection closed before message length header received <traceback object at 0x7efdfb176140>
+2023-04-06 03:32:58,841 - logger - WARNING -  Error handling connection from 127.0.0.1:33412: Connection closed before message length header received <traceback object at 0x7efdfb176140>
+2023-04-06 03:32:58,845 - logger - WARNING -  Error handling connection from 127.0.0.1:33426: Connection closed before message length header received <traceback object at 0x7efdfb161640>
+2023-04-06 03:32:58,886 - logger - INFO -  UponABAFinish 696: 234089 microseconds (priority=0)
+2023-04-06 03:32:59,011 - logger - INFO -  UponABAFinish 1244: 274628 microseconds (priority=1)
+2023-04-06 03:32:59,026 - logger - INFO -  UponABAFinish 1340: 209037 microseconds (priority=2)
+2023-04-06 03:32:59,044 - logger - INFO -  UponABAFinish 1451: 140139 microseconds (priority=3)
+2023-04-06 03:32:59,077 - logger - INFO -  UponABAFinish 1592: 89735 microseconds (priority=4)
+2023-04-06 03:32:59,123 - logger - INFO -  UponABAFinish 1845: 46103 microseconds (priority=5)
+2023-04-06 03:32:59,193 - logger - INFO -  UponABAFinish 2031: 32875 microseconds (priority=6)
+2023-04-06 03:32:59,294 - logger - INFO -  UponABAFinish 2286: 51783 microseconds (priority=7)
+2023-04-06 03:32:59,363 - logger - INFO -  UponABAFinish 2457: 37073 microseconds (priority=8)
+2023-04-06 03:32:59,467 - logger - INFO -  UponABAFinish 2714: 56970 microseconds (priority=9)
+2023-04-06 03:32:59,532 - logger - INFO -  UponABAFinish 2894: 38462 microseconds (priority=10)
+2023-04-06 03:32:59,616 - logger - INFO -  UponABAFinish 3074: 40455 microseconds (priority=11)
+2023-04-06 03:32:59,700 - logger - INFO -  UponABAFinish 3245: 41269 microseconds (priority=12)
+2023-04-06 03:32:59,820 - logger - INFO -  UponABAFinish 3571: 77449 microseconds (priority=13)
+2023-04-06 03:32:59,882 - logger - INFO -  UponABAFinish 3815: 55179 microseconds (priority=14)
+2023-04-06 03:32:59,951 - logger - INFO -  UponABAFinish 3998: 41681 microseconds (priority=15)
+2023-04-06 03:33:00,037 - logger - INFO -  UponABAFinish 4183: 44117 microseconds (priority=16)
+2023-04-06 03:33:00,244 - logger - INFO -  UponABAFinish 4814: 168089 microseconds (priority=17)
+2023-04-06 03:33:00,382 - logger - INFO -  UponABAFinish 5406: 221801 microseconds (priority=18)
+2023-04-06 03:33:00,442 - logger - INFO -  UponABAFinish 5724: 196563 microseconds (priority=19)
+2023-04-06 03:33:00,492 - logger - INFO -  UponABAFinish 5995: 166015 microseconds (priority=20)
+2023-04-06 03:33:00,537 - logger - INFO -  UponABAFinish 6220: 130006 microseconds (priority=21)
+2023-04-06 03:33:00,563 - logger - INFO -  UponABAFinish 6357: 74353 microseconds (priority=22)
+2023-04-06 03:33:00,608 - logger - INFO -  UponABAFinish 6537: 32323 microseconds (priority=23)
+2023-04-06 03:33:00,697 - logger - INFO -  UponABAFinish 6715: 38287 microseconds (priority=24)
+2023-04-06 03:33:00,800 - logger - INFO -  UponABAFinish 6970: 57640 microseconds (priority=25)
+2023-04-06 03:33:00,871 - logger - INFO -  UponABAFinish 7156: 43005 microseconds (priority=26)
+2023-04-06 03:33:00,989 - logger - INFO -  UponABAFinish 7480: 77568 microseconds (priority=27)
+2023-04-06 03:33:01,056 - logger - INFO -  UponABAFinish 7722: 62993 microseconds (priority=28)
+2023-04-06 03:33:01,118 - logger - INFO -  UponABAFinish 7908: 41912 microseconds (priority=29)
+2023-04-06 03:33:01,256 - logger - INFO -  UponABAFinish 8310: 96247 microseconds (priority=30)
+2023-04-06 03:33:01,330 - logger - INFO -  UponABAFinish 8615: 85048 microseconds (priority=31)
+2023-04-06 03:33:01,388 - logger - INFO -  UponABAFinish 8859: 58221 microseconds (priority=32)
+2023-04-06 03:33:01,454 - logger - INFO -  UponABAFinish 9065: 41963 microseconds (priority=33)
+2023-04-06 03:33:01,539 - logger - INFO -  UponABAFinish 9244: 44795 microseconds (priority=34)
+2023-04-06 03:33:01,626 - logger - INFO -  UponABAFinish 9417: 47220 microseconds (priority=35)
+2023-04-06 03:33:01,724 - logger - INFO -  UponABAFinish 9668: 61278 microseconds (priority=36)
+2023-04-06 03:33:01,786 - logger - INFO -  UponABAFinish 9846: 40292 microseconds (priority=37)
+2023-04-06 03:33:01,886 - logger - INFO -  UponABAFinish 10096: 56711 microseconds (priority=38)
+2023-04-06 03:33:01,953 - logger - INFO -  UponABAFinish 10269: 40722 microseconds (priority=39)
+2023-04-06 03:33:02,039 - logger - INFO -  UponABAFinish 10443: 43603 microseconds (priority=40)
+2023-04-06 03:33:02,160 - logger - INFO -  UponABAFinish 10773: 79738 microseconds (priority=41)
+2023-04-06 03:33:02,220 - logger - INFO -  UponABAFinish 11032: 56852 microseconds (priority=42)
+2023-04-06 03:33:02,289 - logger - INFO -  UponABAFinish 11203: 41678 microseconds (priority=43)
+2023-04-06 03:33:02,373 - logger - INFO -  UponABAFinish 11385: 44724 microseconds (priority=44)
+2023-04-06 03:33:02,474 - logger - INFO -  UponABAFinish 11642: 61940 microseconds (priority=45)
+2023-04-06 03:33:02,529 - logger - INFO -  UponABAFinish 11809: 33600 microseconds (priority=46)
+2023-04-06 03:33:02,620 - logger - INFO -  UponABAFinish 11993: 41569 microseconds (priority=47)
+2023-04-06 03:33:02,725 - logger - INFO -  UponABAFinish 12242: 61512 microseconds (priority=48)
+2023-04-06 03:33:02,785 - logger - INFO -  UponABAFinish 12407: 37103 microseconds (priority=49)
+2023-04-06 03:33:02,889 - logger - INFO -  UponABAFinish 12679: 58183 microseconds (priority=50)
+2023-04-06 03:33:02,948 - logger - INFO -  UponABAFinish 12844: 34562 microseconds (priority=51)
+2023-04-06 03:33:03,215 - logger - INFO -  UponABAFinish 13794: 219505 microseconds (priority=52)
+2023-04-06 03:33:03,435 - logger - INFO -  UponABAFinish 14803: 354711 microseconds (priority=53)
+2023-04-06 03:33:03,504 - logger - INFO -  UponABAFinish 15198: 340002 microseconds (priority=54)
+2023-04-06 03:33:03,548 - logger - INFO -  UponABAFinish 15431: 303525 microseconds (priority=55)
+2023-04-06 03:33:03,618 - logger - INFO -  UponABAFinish 15791: 288995 microseconds (priority=56)
+2023-04-06 03:33:03,639 - logger - INFO -  UponABAFinish 15931: 229381 microseconds (priority=57)
+2023-04-06 03:33:03,653 - logger - INFO -  Throughput time: 5001322 (microseconds)
+2023-04-06 03:33:03,658 - logger - WARNING -  Error handling connection from 127.0.0.1:33348: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb1608c0>
+2023-04-06 03:33:03,659 - logger - WARNING -  Error handling connection from 127.0.0.1:33472: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb143c80>
+2023-04-06 03:33:03,659 - logger - WARNING -  Error handling connection from 127.0.0.1:33198: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb1608c0>
+2023-04-06 03:33:03,659 - logger - WARNING -  Error handling connection from 127.0.0.1:33222: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb78e980>
+2023-04-06 03:33:03,660 - logger - WARNING -  Error handling connection from 127.0.0.1:33486: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb17cc40>
+2023-04-06 03:33:03,661 - logger - WARNING -  Error handling connection from 127.0.0.1:33528: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb160800>
+2023-04-06 03:33:03,661 - logger - WARNING -  Error handling connection from 127.0.0.1:33548: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb78edc0>
+2023-04-06 03:33:03,662 - logger - WARNING -  Error handling connection from 127.0.0.1:33552: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb142440>
+2023-04-06 03:33:03,662 - logger - WARNING -  Error handling connection from 127.0.0.1:33442: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb142940>
+2023-04-06 03:33:03,663 - logger - WARNING -  Error handling connection from 127.0.0.1:33564: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb143c80>
+2023-04-06 03:33:03,663 - logger - WARNING -  Error handling connection from 127.0.0.1:33544: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb143980>
+2023-04-06 03:33:03,664 - logger - WARNING -  Error handling connection from 127.0.0.1:33172: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb160580>
+2023-04-06 03:33:03,664 - logger - WARNING -  Error handling connection from 127.0.0.1:33196: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb174740>
+2023-04-06 03:33:03,664 - logger - WARNING -  Error handling connection from 127.0.0.1:33238: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb162640>
+2023-04-06 03:33:03,664 - logger - WARNING -  Error handling connection from 127.0.0.1:33182: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb161f40>
+2023-04-06 03:33:03,664 - logger - WARNING -  Error handling connection from 127.0.0.1:33576: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb78eec0>
+2023-04-06 03:33:03,665 - logger - WARNING -  Error handling connection from 127.0.0.1:33514: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb1749c0>
+2023-04-06 03:33:03,665 - logger - WARNING -  Error handling connection from 127.0.0.1:33510: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb161940>
+2023-04-06 03:33:03,665 - logger - WARNING -  Error handling connection from 127.0.0.1:33212: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb17ee40>
+2023-04-06 03:33:03,665 - logger - WARNING -  Error handling connection from 127.0.0.1:33428: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb174fc0>
+2023-04-06 03:33:03,666 - logger - WARNING -  Error handling connection from 127.0.0.1:33454: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb162a40>
+2023-04-06 03:33:03,666 - logger - WARNING -  Error handling connection from 127.0.0.1:33456: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb142380>
+2023-04-06 03:33:03,666 - logger - WARNING -  Error handling connection from 127.0.0.1:33498: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb78ea00>
+2023-04-06 03:33:03,666 - logger - WARNING -  Error handling connection from 127.0.0.1:33506: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb78f300>
+2023-04-06 03:33:03,666 - logger - WARNING -  Error handling connection from 127.0.0.1:33254: [Errno 9] Bad file descriptor <traceback object at 0x7efdfb174700>

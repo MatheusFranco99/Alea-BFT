@@ -80,7 +80,7 @@ def plot_throughput_latency(ns,output_filename):
     ax.legend()
     ax.set_title('Latency by throughput with different network size')
     ax.set_xlabel('Throughput (tx/sec)')
-    ax.set_ylabel('Latency time (ms)')
+    ax.set_ylabel('Latency time (microsec)')
     ax.grid(True)
     plt.savefig(output_filename)
 
